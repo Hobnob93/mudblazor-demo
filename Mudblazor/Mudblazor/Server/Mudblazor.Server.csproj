@@ -13,5 +13,10 @@
     <ProjectReference Include="..\Shared\Mudblazor.Shared.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+	<Watch Include="..\Client\**\*.razor" />
+	<Watch Include="..\Client\**\*.cs" />
+	<Watch Include="..\Shared\**\*.cs" />
+  </ItemGroup>
 
 </Project>
