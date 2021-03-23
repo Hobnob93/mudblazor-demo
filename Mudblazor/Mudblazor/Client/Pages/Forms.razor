@@ -1,0 +1,70 @@
+﻿@using System.ComponentModel.DataAnnotations
+
+@page "/form"
+
+<MudContainer>
+    <MudGrid Spacing="2" Justify="Justify.Center">
+        <MudItem xs="6">
+            <MudCard>
+                <MudCardContent>
+                    <MudForm @ref="Form" @bind-IsValid="@Success" @bind-Errors="@Errors">
+                        <MudTextField T="string" Label="Username" Required="true" RequiredError="User name is required!" />
+                        <MudTextField T="string" Label="Email" Required="true" RequiredError="Email is required!"
+                                      Validation="@(new EmailAddressAttribute() {ErrorMessage = "The email address is invalid"})" />
+                        <MudTextField T="string" Label="Password" HelperText="Choose a strong password" @ref="MainPwField"
+                                      InputType="InputType.Password"
+                                      Validation="new Func<string, IEnumerable<string>>(PasswordStrength)" Required="true"
+                                      RequiredError="Password is required!" />
+                        <MudTextField T="string"
+                                      Label="Password" HelperText="Repeat the password" InputType="InputType.Password"
+                                      Validation="new Func<string, string>(PasswordMatch)" />
+                        <MudSelect T="string" Label="Best Team" RequiredError="You need to chose your favourite team!" Validation="new Func<string, string>(CorrectBestTeam)" OffsetY="true">
+                            <MudSelectItem Value="@("Alfa Romeo")" />
+                            <MudSelectItem Value="@("AlphaTauri")" />
+                            <MudSelectItem Value="@("Alpine")" />
+                            <MudSelectItem Value="@("Aston Martin")" />
+                            <MudSelectItem Value="@("Ferrari")" />
+                            <MudSelectItem Value="@("Haas")" />
+                            <MudSelectItem Value="@("McLaren")" />
+                            <MudSelectItem Value="@("Mercedes")" />
+                            <MudSelectItem Value="@("Red Bull")" />
+                            <MudSelectItem Value="@("Williams")" />
+                        </MudSelect>
+                        <div class="d-flex my-2">
+                            <MudSwitch @bind-Checked="@ShowInfo" Label="Info" Color="Color.Primary" />
+                            <MudSwitch @bind-Checked="@ShowSuccess" Label="Success" Color="Color.Secondary" />
+                            <MudSwitch @bind-Checked="@ShowWarning" Label="Warning" Color="Color.Warning" />
+                            <MudSwitch @bind-Checked="@ShowError" Label="Error" Color="Color.Error" />
+                        </div>
+                        <div class="d-flex my-2">
+                            <MudRadioGroup T="string" Required="true" RequiredError="Account type is required!">
+                                <MudRadio Option="@("Personal")">Personal</MudRadio>
+                                <MudRadio Option="@("Professional")">Professional</MudRadio>
+                            </MudRadioGroup>
+                        </div>
+                        <MudCheckBox T="bool" Required="true" RequiredError="Formula 1 IS the best sport!" Class="ml-n2"
+                                     Label="Formula 1 is the best sport." />
+                    </MudForm>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" Disabled="!Success" Class="ml-auto">Register</MudButton>
+                </MudCardActions>
+            </MudCard>
+
+            <MudPaper Class="pa-4 justify-center my-4 mud-text-align-center">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => Form.Validate()">Validate</MudButton>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => Form.Reset()" Class="mx-2">Reset</MudButton>
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="() => Form.ResetValidation()">Reset Validation</MudButton>
+            </MudPaper>
+
+            <MudExpansionPanels>
+                <MudExpansionPanel Text="@($"Show Errors ({Errors.Length})")">
+                    @foreach (var error in Errors)
+                    {
+                        <MudText Color="@Color.Error">@error</MudText>
+                    }
+                </MudExpansionPanel>
+            </MudExpansionPanels>
+        </MudItem>
+    </MudGrid>
+</MudContainer>

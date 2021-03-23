@@ -8,6 +8,11 @@ namespace Mudblazor.Client.Shared
         [CascadingParameter]
         public MudDialogInstance MudDialog { get; set; }
 
+        [Parameter]
+        public string PostedBy { get; set; }
+        [Parameter]
+        public string Location { get; set; }
+
 
         void Submit() => MudDialog.Close(DialogResult.Ok(true));
         void Cancel() => MudDialog.Cancel();

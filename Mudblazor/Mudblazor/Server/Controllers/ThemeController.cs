@@ -34,7 +34,8 @@ namespace Mudblazor.Server.Controllers
                         ActionDisabledBackground = "rgba(255, 255, 255, 0.12)",
                         Primary = "#5996e2",
                         Secondary = "#8ac8a5",
-                        Tertiary = "#ff9381"
+                        Tertiary = "#ff9381",
+                        Error = "#ff9381"
                     }
                 },
 

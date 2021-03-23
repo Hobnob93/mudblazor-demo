@@ -21,7 +21,13 @@ namespace Mudblazor.Client.Pages
 
         public void ShowDialog()
         {
-            Dialog.Show<SampleDialog>("Sample Dialog");
+            var parameters = new DialogParameters
+            {
+                { "PostedBy", "Sebastian Vettel" },
+                { "Location", "Bahrain" }
+            };
+
+            Dialog.Show<SampleDialog>("Sample Dialog", parameters);
         }
 
         public async Task ShowDefaultMessageBox()
