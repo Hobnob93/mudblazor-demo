@@ -4,7 +4,9 @@ using MudBlazor;
 
 namespace Mudblazor.Server.Controllers
 {
-    public class ThemeController : Controller
+    [ApiController]
+    [Route("[controller]")]
+    public class ThemeController : ControllerBase
     {
         [HttpGet]
         public Themes Get()
