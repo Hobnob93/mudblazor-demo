@@ -1,17 +1,20 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page">
-    <div class="sidebar">
-        
-    </div>
+<MudThemeProvider Theme="CurrentTheme" />
 
-    <div class="main">
-        <div class="top-row px-4">
-            <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
-        </div>
+<MudLayout>
+    <MudAppBar Color="Color.Inherit" Elevation="1" Fixed="false">
+        <MudText Typo="Typo.h5" Class="ml-3">MudBlazor Demo</MudText>
+        <MudAppBarSpacer />
+        <MudTooltip Text="Toggle light/dark">
+            <MudIconButton Icon="@ToggleIcon" @onclick="ToggleTheme" />
+        </MudTooltip>
+        <MudTooltip Text="Kyle Hobdey">
+            <MudAvatar Color="Color.Secondary">KH</MudAvatar>
+        </MudTooltip>
+    </MudAppBar>
 
-        <div class="content px-4">
-            @Body
-        </div>
-    </div>
-</div>
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
