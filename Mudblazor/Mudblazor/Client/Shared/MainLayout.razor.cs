@@ -15,6 +15,7 @@ namespace Mudblazor.Client.Shared
         public HttpClient Http { get; set; }
 
         public bool UseLightMode { get; set; }
+        public bool ShowSidebar { get; set; } = true;
 
         public string ToggleIcon => UseLightMode ? Icons.Filled.NightlightRound : Icons.Filled.WbSunny;
         public MudTheme CurrentTheme => UseLightMode ? themes?.LightTheme : themes?.DarkTheme;
