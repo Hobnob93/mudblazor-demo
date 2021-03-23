@@ -2,7 +2,7 @@
 
 <MudContainer>
     <MudText Typo="Typo.h4">Cards</MudText>
-    <MudGrid Class="mt-1">
+    <MudGrid Class="mt-1 mb-4">
         <MudItem xs="12" md="6">
             <CardItem PostedBy="Daniel Ricciardo"
                       Location="Silverstone"
@@ -13,7 +13,36 @@
             <CardItem PostedBy="Max Verstappen"
                       Location="Belgium"
                       ImageAddress="https://www.formula1.com/content/dam/fom-website/manual/Misc/2020/2020races/British1/GettyImages-1262985870.jpg"
-                      Description="Annoyingly unbeatable." />
+                      Description="Annoyingly unbeatables." />
         </MudItem>
     </MudGrid>
+
+    <MudText Typo="Typo.h4">Modals</MudText>
+    <div class="d-flex align-center justify-center mud-width-full my-2">
+        <MudButton @onclick="ShowDialog" Variant="Variant.Filled" Color="Color.Primary">
+            Open Dialog
+        </MudButton>
+    </div>
+    <div class="d-flex align-center justify-center mud-width-full my-2">
+        <MudButton Class="mx-1" @onclick="ShowDefaultMessageBox" Variant="Variant.Filled" Color="Color.Primary">
+            Open Default Message Box
+        </MudButton>
+        <MudButton Class="mx-1" @onclick="ShowMessageBox" Variant="Variant.Filled" Color="Color.Primary">
+            Open Custom Message Box
+        </MudButton>
+    </div>
+    <div class="d-flex align-center justify-center mud-width-full">
+        <MudChip>
+            @MessageBoxResult
+        </MudChip>
+    </div>
+
+    <MudMessageBox @ref="MBox" Title="Warning" CancelText="Cancel">
+        <MessageContent>
+            Deleting can <b><i>not</i></b> be undone!
+        </MessageContent>
+        <YesButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Error" StartIcon="@Icons.Material.Filled.DeleteForever">Delete!</MudButton>
+        </YesButton>
+    </MudMessageBox>
 </MudContainer>
