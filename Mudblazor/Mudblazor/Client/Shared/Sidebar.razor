@@ -2,7 +2,15 @@
     <MudDrawerHeader></MudDrawerHeader>
      
     <MudNavMenu Class="mud-width-full">
-        <MudNavLink Match="NavLinkMatch.All" Href="" Icon="@Icons.Filled.Dashboard">Home</MudNavLink>
-        <MudNavLink Match="NavLinkMatch.All" Href="/about" Icon="@Icons.Filled.AccountBox">About Me</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="" Icon="@Icons.Filled.Home">Home</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/grid" Icon="@Icons.Filled.GridOn">Grid Layout</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/card" Icon="@Icons.Filled.CreditCard">Cards</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/form" Icon="@Icons.Filled.DynamicForm">Forms</MudNavLink>
+        <MudNavLink Match="NavLinkMatch.All" Href="/table" Icon="@Icons.Filled.TableChart">Tables</MudNavLink>
+        
+        <MudNavGroup Title="Misc" Icon="@Icons.Filled.MiscellaneousServices">
+            <MudNavLink Match="NavLinkMatch.All" Href="/toolbar">Toolbar & Charts</MudNavLink>
+            <MudNavLink Match="NavLinkMatch.All" Href="/other">Bits and bobs</MudNavLink>
+        </MudNavGroup>
     </MudNavMenu>
 </MudDrawer>
