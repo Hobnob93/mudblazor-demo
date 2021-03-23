@@ -17,7 +17,7 @@ namespace Mudblazor.Client.Shared
         public bool UseLightMode { get; set; }
 
         public string ToggleIcon => UseLightMode ? Icons.Filled.NightlightRound : Icons.Filled.WbSunny;
-        public MudTheme CurrentTheme => UseLightMode ? themes.LightTheme : themes.DarkTheme;
+        public MudTheme CurrentTheme => UseLightMode ? themes?.LightTheme : themes?.DarkTheme;
 
 
         protected override async Task OnInitializedAsync()
