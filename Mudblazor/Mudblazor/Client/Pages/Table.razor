@@ -1,0 +1,44 @@
+﻿@using Mudblazor.Shared
+
+@page "/table" 
+
+<MudContainer>
+    <MudGrid Justify="Justify.Center">
+        <MudItem xs="12">
+            <MudTable Items="Elements" Dense="Dense" Hover="Hover" Bordered="Bordered" Striped="Striped" Filter="new Func<Driver, bool>(FilterFunc)" @bind-SelectedItem="selectedItem">
+                <ToolBarContent>
+                    <MudText Typo="Typo.h6">F1 Driver Standings</MudText>
+                    <MudToolBarSpacer />
+                    <MudTextField @bind-Value="SearchString" Placeholder="Search" Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0"></MudTextField>
+                </ToolBarContent>
+                <HeaderContent>
+                    <MudTh><MudTableSortLabel InitialDirection="SortDirection.Ascending" SortBy="new Func<Driver, object>(x=>x.Position)">Pos</MudTableSortLabel></MudTh>
+                    <MudTh><MudTableSortLabel SortBy="new Func<Driver, object>(x=>x.Points)">Points</MudTableSortLabel></MudTh>
+                    <MudTh><MudTableSortLabel SortBy="new Func<Driver, object>(x=>x.Id)">Ident</MudTableSortLabel></MudTh>
+                    <MudTh><MudTableSortLabel SortBy="new Func<Driver, object>(x=>x.Name)">Name</MudTableSortLabel></MudTh>
+                    <MudTh><MudTableSortLabel SortBy="new Func<Driver, object>(x=>x.Team)">Team</MudTableSortLabel></MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd DataLabel="Pos">@context.Position</MudTd>
+                    <MudTd DataLabel="Points mass">@context.Points</MudTd>
+                    <MudTd DataLabel="Ident">@context.Id</MudTd>
+                    <MudTd DataLabel="Name">@context.Name</MudTd>
+                    <MudTd DataLabel="Team">@context.Team</MudTd>
+                </RowTemplate>
+                <PagerContent>
+                    <MudTablePager />
+                </PagerContent>
+            </MudTable>
+            <MudToolBar>
+                <MudSwitch @bind-Checked="Hover" Color="Color.Primary">Hover</MudSwitch>
+                <MudSwitch @bind-Checked="Dense" Color="Color.Secondary">Dense</MudSwitch>
+                <MudSwitch @bind-Checked="Striped" Color="Color.Tertiary">Striped</MudSwitch>
+                <MudSwitch @bind-Checked="Bordered" Color="Color.Warning">Bordered</MudSwitch>
+                <MudToolBarSpacer />
+                <div style="min-width:200px;">
+                    <MudText Inline="true">Selected: @selectedItem?.Name</MudText>
+                </div>
+            </MudToolBar>
+        </MudItem>
+    </MudGrid>
+</MudContainer>

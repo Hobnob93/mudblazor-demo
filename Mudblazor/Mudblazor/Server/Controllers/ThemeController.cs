@@ -35,7 +35,10 @@ namespace Mudblazor.Server.Controllers
                         Primary = "#5996e2",
                         Secondary = "#8ac8a5",
                         Tertiary = "#ff9381",
-                        Error = "#ff9381"
+                        Error = "#ff9381",
+                        TableHover = "#5aa685",
+                        TableStriped = "#4f4f57",
+                        TableLines = "rgba(255, 255, 255, 0.70)"
                     }
                 },
 
