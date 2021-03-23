@@ -1,0 +1,22 @@
+﻿<MudCard>
+    <MudCardHeader>
+        <CardHeaderAvatar>
+            <MudAvatar Color="Color.Secondary">@Initials</MudAvatar>
+        </CardHeaderAvatar>
+        <CardHeaderContent>
+            <MudText Typo="Typo.body1">@PostedBy</MudText>
+            <MudText Typo="Typo.body2">@Location</MudText>
+        </CardHeaderContent>
+        <CardHeaderActions>
+            <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default" />
+        </CardHeaderActions>
+    </MudCardHeader>
+    <MudCardMedia Image="@ImageAddress" Height="250" />
+    <MudCardContent>
+        <MudText Typo="Typo.body2">@Description</MudText>
+    </MudCardContent>
+    <MudCardActions>
+        <MudIconButton Icon="@Icons.Material.Filled.Favorite" Color="Color.Tertiary" />
+        <MudIconButton Icon="@Icons.Material.Filled.Share" Color="Color.Primary" />
+    </MudCardActions>
+</MudCard>
