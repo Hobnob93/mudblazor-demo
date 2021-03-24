@@ -1,0 +1,38 @@
+﻿@page "/toolbar"
+
+<MudContainer>
+    <MudGrid>
+        <MudItem xs="12">
+            <MudPaper Class="py-2">
+                <MudToolBar>
+                    <MudIconButton Icon="@Icons.Material.Outlined.Menu" Color="Color.Inherit" Class="mr-5" />
+                    <MudIconButton Icon="@Icons.Material.Outlined.Add" />
+                    <MudIconButton Icon="@Icons.Material.Outlined.Edit" />
+                    <MudIconButton Icon="@Icons.Material.Outlined.Remove" Color="Color.Inherit" />
+                    <MudIconButton Icon="@Icons.Material.Outlined.Settings" Color="Color.Inherit" />
+                    <MudToolBarSpacer />
+                    <MudIconButton Icon="@Icons.Material.Outlined.Notifications" />
+                    <MudIconButton Icon="@Icons.Material.Outlined.PushPin" />
+                    <MudIconButton Icon="@Icons.Material.Outlined.PeopleAlt" />
+                    <MudIconButton Icon="@Icons.Material.Outlined.MoreVert" Color="Color.Inherit" />
+                </MudToolBar>
+            </MudPaper>
+        </MudItem>
+
+        <MudItem xs="12">
+            <MudPaper Class="py-2">
+                <MudText Class="ml-4" Typo="Typo.h4">Top 10 Driver's Points</MudText>
+                <MudChart ChartType="ChartType.Bar" XAxisLabels="@XAxisLabels" ChartSeries="@BarSeries" Width="100%" Height="350px"></MudChart>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+
+    <MudGrid>
+        <MudItem xs="12">
+            <MudPaper Class="py-2">
+                <MudText Class="ml-4" Typo="Typo.h4">Team Points Distribution</MudText>
+                <MudChart ChartType="ChartType.Pie" InputData="@PieData" InputLabels="@PieLabels" Width="100%" Height="300px" />
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>

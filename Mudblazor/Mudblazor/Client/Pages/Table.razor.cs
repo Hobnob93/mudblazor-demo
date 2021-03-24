@@ -21,11 +21,11 @@ namespace Mudblazor.Client.Pages
 
         private Driver selectedItem = null;
         private HashSet<Driver> selectedItems = new HashSet<Driver>();
-        private IEnumerable<Driver> Elements = new List<Driver>();
+        private IEnumerable<Driver> drivers = new List<Driver>();
 
         protected override async Task OnInitializedAsync()
         {
-            Elements = await Http.GetFromJsonAsync<List<Driver>>("Drivers");
+            drivers = await Http.GetFromJsonAsync<List<Driver>>("Drivers");
         }
 
         private bool FilterFunc(Driver element)

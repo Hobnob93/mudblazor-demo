@@ -5,7 +5,7 @@
 <MudContainer>
     <MudGrid Justify="Justify.Center">
         <MudItem xs="12">
-            <MudTable Items="Elements" Dense="Dense" Hover="Hover" Bordered="Bordered" Striped="Striped" Filter="new Func<Driver, bool>(FilterFunc)" @bind-SelectedItem="selectedItem">
+            <MudTable Items="drivers" Dense="Dense" Hover="Hover" Bordered="Bordered" Striped="Striped" Filter="new Func<Driver, bool>(FilterFunc)" @bind-SelectedItem="selectedItem">
                 <ToolBarContent>
                     <MudText Typo="Typo.h6">F1 Driver Standings</MudText>
                     <MudToolBarSpacer />
