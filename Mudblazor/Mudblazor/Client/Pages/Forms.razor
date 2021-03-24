@@ -8,17 +8,17 @@
             <MudCard>
                 <MudCardContent>
                     <MudForm @ref="Form" @bind-IsValid="@Success" @bind-Errors="@Errors">
-                        <MudTextField T="string" Label="Username" Required="true" RequiredError="User name is required!" />
-                        <MudTextField T="string" Label="Email" Required="true" RequiredError="Email is required!"
+                        <MudTextField Class="my-1" T="string" Label="Username" Required="true" RequiredError="User name is required!" />
+                        <MudTextField Class="my-1" T="string" Label="Email" Required="true" RequiredError="Email is required!"
                                       Validation="@(new EmailAddressAttribute() {ErrorMessage = "The email address is invalid"})" />
-                        <MudTextField T="string" Label="Password" HelperText="Choose a strong password" @ref="MainPwField"
+                        <MudTextField Class="my-1" T="string" Label="Password" HelperText="Choose a strong password" @ref="MainPwField"
                                       InputType="InputType.Password"
                                       Validation="new Func<string, IEnumerable<string>>(PasswordStrength)" Required="true"
                                       RequiredError="Password is required!" />
-                        <MudTextField T="string"
+                        <MudTextField Class="my-1" T="string"
                                       Label="Password" HelperText="Repeat the password" InputType="InputType.Password"
                                       Validation="new Func<string, string>(PasswordMatch)" />
-                        <MudSelect T="string" Label="Best Team" RequiredError="You need to chose your favourite team!" Validation="new Func<string, string>(CorrectBestTeam)" OffsetY="true">
+                        <MudSelect Class="my-1" T="string" Label="Best Team" RequiredError="You need to chose your favourite team!" Validation="new Func<string, string>(CorrectBestTeam)" OffsetY="true">
                             <MudSelectItem Value="@("Alfa Romeo")" />
                             <MudSelectItem Value="@("AlphaTauri")" />
                             <MudSelectItem Value="@("Alpine")" />
@@ -30,6 +30,8 @@
                             <MudSelectItem Value="@("Red Bull")" />
                             <MudSelectItem Value="@("Williams")" />
                         </MudSelect>
+                        <MudDatePicker Class="my-1" Label="Pick a Date" @bind-Date="Date" DateFormat="dd/MM/yyyy" />
+                        <MudDateRangePicker Class="my-1" Label="Pick a Range of Dates" @bind-DateRange="DateRange" />
                         <div class="d-flex my-2">
                             <MudSwitch @bind-Checked="@ShowInfo" Label="Info" Color="Color.Primary" />
                             <MudSwitch @bind-Checked="@ShowSuccess" Label="Success" Color="Color.Secondary" />
@@ -42,7 +44,7 @@
                                 <MudRadio Option="@("Professional")">Professional</MudRadio>
                             </MudRadioGroup>
                         </div>
-                        <MudCheckBox T="bool" Required="true" RequiredError="Formula 1 IS the best sport!" Class="ml-n2"
+                        <MudCheckBox T="bool" Required="true" RequiredError="Formula 1 IS the best sport!" Class="ml-n2 my-1"
                                      Label="Formula 1 is the best sport." />
                     </MudForm>
                 </MudCardContent>

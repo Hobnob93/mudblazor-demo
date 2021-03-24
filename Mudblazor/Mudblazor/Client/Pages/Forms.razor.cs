@@ -17,6 +17,9 @@ namespace Mudblazor.Client.Pages
         public MudTextField<string> MainPwField { get; set; }
         public MudForm Form { get; set; }
 
+        public DateTime? Date { get; set; } = DateTime.Today;
+        public DateRange DateRange { get; set; } =  new DateRange(DateTime.Now.Date, DateTime.Now.AddDays(5).Date);
+
 
         private IEnumerable<string> PasswordStrength(string password)
         {
