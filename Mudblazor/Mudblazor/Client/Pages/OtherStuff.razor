@@ -1,0 +1,142 @@
+﻿@page "/other"
+
+<MudContainer>
+    <MudTabs Elevation="4" Rounded="true" Color="@Color.Primary" ApplyEffectsToContainer="true">
+        <MudTabPanel Text="Popover">
+            <MudContainer Class="py-4">
+                <MudButton Class="mr-4" Variant="Variant.Filled" Color="Color.Primary" OnClick="TogglePopover">Click</MudButton>
+                <MudButton Class="mx-4" Variant="Variant.Filled" Color="Color.Secondary" @onmouseover="() => ShowPopover=true" @onmouseout="() => ShowPopover=false">Hover</MudButton>
+            </MudContainer>
+
+            <MudPopover OffsetY="true" Open="ShowPopover" Class="px-4 pt-4" Style="width: auto;">
+                <MudText>Go watch F1 - starts this weekend!</MudText>
+                <MudButton OnClick="TogglePopover" Class="ml-auto mr-n3 mb-1" Color="Color.Error">Close</MudButton>
+            </MudPopover>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Progress">
+            <MudContainer Class="py-4">
+                <div class="py-2">
+                    <MudProgressCircular Color="Color.Info" Indeterminate="true" />
+                </div>
+                <div class="py-2">
+                    <MudProgressCircular Color="Color.Tertiary" Value="@ProgressAmount" />
+                </div>
+                <div class="py-2">
+                    <MudProgressLinear Color="Color.Tertiary" Indeterminate="true" Class="my-7" />
+                </div>
+                <div class="py-2">
+                    <MudProgressLinear Color="Color.Secondary" Value="@ProgressAmount" Class="my-7" />
+                </div>
+            </MudContainer>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Rating">
+            <MudContainer Class="py-4">
+                <div class="py-2">
+                    <MudRating SelectedValue="2" />
+                </div>
+                <div class="py-2">
+                    <MudRating Disabled="true" SelectedValue="2" />
+                </div>
+                <div class="py-2">
+                    <MudRating ReadOnly="true" SelectedValue="2" MaxValue="10" />
+                </div>
+            </MudContainer>
+        </MudTabPanel>
+
+        <MudTabPanel Text="File Upload">
+            <MudContainer Class="py-4">
+                <InputFile id="fileInput" OnChange="UploadFiles" hidden multiple />
+
+                <MudFab HtmlTag="label"
+                        Color="Color.Success"
+                        Icon="@Icons.Filled.AttachFile"
+                        for="fileInput" />
+
+                @if (Files != null)
+                {
+                    <MudText Typo="@Typo.h6">@Files.Count() File@(Files.Count()>1?"s":""):</MudText>
+                    <MudList>
+                        @foreach (var file in Files)
+                        {
+                            <MudListItem Icon="@Icons.Filled.AttachFile" @key="@file">
+                                @file.Name <code>@file.Size bytes</code>
+                            </MudListItem>
+                        }
+                    </MudList>
+                }
+            </MudContainer>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Snackbar">
+            <MudContainer Class="py-4">
+                <MudButton Color="Color.Inherit" @onclick="@(() => Snackbar.Add("Ferrari is bad", Severity.Normal))">Normal Snackbar</MudButton>
+                <MudButton Color="Color.Info" @onclick="@(() => Snackbar.Add("Norris is underrated", Severity.Info))">Info Snackbar</MudButton>
+                <MudButton Color="Color.Success" @onclick="@(() => Snackbar.Add("Red Bull will win in 2021", Severity.Success))">Success Snackbar</MudButton>
+                <MudButton Color="Color.Warning" @onclick="@(() => Snackbar.Add("Rain incoming!", Severity.Warning))">Warning Snackbar</MudButton>
+                <MudButton Color="Color.Error" @onclick="@(() => Snackbar.Add("Mazepin doesn't deserve to be in F1", Severity.Error))">Error Snackbar</MudButton>
+            </MudContainer>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Chips">
+            <MudContainer Class="py-4">
+                <div Class="d-flex justify-space-around flex-wrap mt-4">
+                    <MudChip>Default</MudChip>
+                    <MudChip Color="Color.Primary">Primary</MudChip>
+                    <MudChip Color="Color.Secondary">Secondary</MudChip>
+                    <MudChip Color="Color.Info">Info</MudChip>
+                    <MudChip Color="Color.Success">Success</MudChip>
+                    <MudChip Color="Color.Warning">Warning</MudChip>
+                    <MudChip Color="Color.Error">Error</MudChip>
+                    <MudChip Color="Color.Dark">Dark</MudChip>
+                </div>
+            </MudContainer>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Badges">
+            <MudContainer Class="py-4">
+                <div Class="d-flex justify-space-around flex-wrap mt-4">
+                    <MudBadge Content="3" Color="Color.Primary" Overlap="true" Class="mx-6 my-4">
+                        <MudIcon Icon="@Icons.Material.Filled.Email" Color="Color.Default" />
+                    </MudBadge>
+                    <MudBadge Content="100" Color="Color.Primary" Overlap="true" Class="mx-6 my-4">
+                        <MudIcon Icon="@Icons.Material.Filled.Email" Color="Color.Default" />
+                    </MudBadge>
+                    <MudBadge Icon="@Icons.Material.Filled.Lock" Color="Color.Error" Overlap="true" Bordered="true" Class="mx-6 my-4">
+                        <MudButton Color="Color.Error" Variant="Variant.Filled" DisableElevation="true">Security Issues</MudButton>
+                    </MudBadge>
+                    <MudBadge Dot="true" Color="Color.Info" Class="mx-6 my-4">
+                        <MudText>Bug Reports</MudText>
+                    </MudBadge>
+                </div>
+            </MudContainer>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Expansion Panel">
+            <MudContainer Class="py-4">
+                <MudExpansionPanels DisableBorders="true" Elevation="0">
+                    <MudExpansionPanel Text="Panel One">
+                        Panel One Content
+                    </MudExpansionPanel>
+                    <MudExpansionPanel Text="Panel Two">
+                        Panel Two Content
+                    </MudExpansionPanel>
+                    <MudExpansionPanel Text="Panel Three">
+                        Panel Three Content
+                    </MudExpansionPanel>
+                </MudExpansionPanels>
+            </MudContainer>
+        </MudTabPanel>
+
+        <MudTabPanel Text="Alert">
+            <MudContainer Class="py-4">
+                <MudAlert Severity="Severity.Normal">Ferrari is bad</MudAlert>
+                <MudAlert Severity="Severity.Info">Norris is underrated</MudAlert>
+                <MudAlert Severity="Severity.Success">Red Bull will win in 2021</MudAlert>
+                <MudAlert Severity="Severity.Warning">Rain incoming!</MudAlert>
+                <MudAlert Severity="Severity.Error">Mazepin doesn't deserve to be in F1</MudAlert>
+            </MudContainer>
+        </MudTabPanel>
+    </MudTabs>
+</MudContainer>

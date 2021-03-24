@@ -4,6 +4,7 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 using MudBlazor.Services;
+using MudBlazor;
 
 namespace Mudblazor.Client
 {
@@ -15,7 +16,11 @@ namespace Mudblazor.Client
             builder.RootComponents.Add<App>("#app");
 
             builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) });
-            builder.Services.AddMudServices();
+            builder.Services.AddMudServices(config =>
+            {
+                config.SnackbarConfiguration.PositionClass = Defaults.Classes.Position.BottomLeft;
+                config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
+            });
 
             await builder.Build().RunAsync();
         }
